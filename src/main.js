@@ -7,7 +7,7 @@ class BankAccount {
         if (amount > 0 && typeof amount === 'number'){
             this.#balance += amount;
         }else {
-            throw new Error('invalid number')
+            throw new Error('Invalid number')
         }
         console.log(this.#balance)
     }
@@ -15,7 +15,7 @@ class BankAccount {
         if (amount > 0 && typeof amount === 'number'){
             this.#balance -= amount;
         }else{
-            throw new Error('invalid number')
+            throw new Error('Invalid number')
         }
         console.log(this.#balance)
     }
@@ -24,6 +24,7 @@ class BankAccount {
         return this.#balance;
     }
 }
+
 const user = new BankAccount(2000);
 user.deposit(1000);
 user.withdraw(2000);
