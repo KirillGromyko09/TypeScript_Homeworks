@@ -4,8 +4,7 @@ function deepClone(obj) {
     if (obj === null || typeof obj !== 'object') {
         return obj;
     }
-    // const clone: object | [] = Array.isArray(obj) ? [] : {};
-    const clone = Array.isArray(obj) ? [] : {};
+    const clone = (Array.isArray(obj) ? [] : {});
     for (let key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
             clone[key] = deepClone(obj[key]);
@@ -14,6 +13,7 @@ function deepClone(obj) {
     return clone;
 }
 const copy = deepClone(original);
-console.log(original !== copy);
-// console.log(original.b !== copy.b);
-// console.log(original.d !== copy.d);
+console.log(original !== copy); // true
+console.log(original.b !== copy.b);
+console.log(original.d !== copy.d);
+console.log(copy);
