@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint TS-Homeworks",
-    "preview": "vite preview"
+    "compile-watch": "tsc --watch",
+    "lint": "eslint TS-Homeworks"
   },
   "dependencies": {
     "react": "^18.3.1",
