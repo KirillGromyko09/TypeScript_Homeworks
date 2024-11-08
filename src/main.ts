@@ -4,7 +4,7 @@ interface ArrayMethodCallback<K, F> {
 
 function customFilter<T, U>(array: T[], callback: ArrayMethodCallback<T, U>): T[] {
     const result: T[] = [];
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i+= 1) {
         if (callback(array[i], i, array)) {
             result.push(array[i]);
         }
