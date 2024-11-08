@@ -1,6 +1,19 @@
+interface ArrayMethodCallback<K, F> {
+    (item: K, index: number, arr: K[]): F;
+}
+
+function customFilter<T, U>(array: T[], callback: ArrayMethodCallback<T, U>): T[] {
+    const result: T[] = [];
+    for (let i = 0; i < array.length; i++) {
+        if (callback(array[i], i, array)) {
+            result.push(array[i]);
+        }
+    }
+    return result;
+}
 
 function filterByProperty<T , K extends keyof T>(array:T[],property: K, value: T[K]): T[] {
-    return array.filter((item:T) => item[property] === value);
+    return customFilter(array,(item:T) => item[property] === value);
 }
 
 type User = {
