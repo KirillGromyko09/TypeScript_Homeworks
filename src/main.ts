@@ -1,24 +1,5 @@
-enum OrderStatus {
-    Pending = 'pending',
-    Processing = 'processing',
-    Shipped = 'shipped',
-    Delivered = 'delivered',
-    Canceled = 'canceled',
-}
-
-enum PaymentType {
-    CreditCard = 'creditCard',
-    PayPal = 'paypal',
-    BankTransfer = 'bankTransfer',
-    CashOnDelivery = 'cashOnDelivery',
-}
-
-interface Order {
-    id: string;
-    amount: number;
-    status: OrderStatus;
-    payment: PaymentType;
-}
+import {Order} from "./interface.ts";
+import {OrderStatus, PaymentType} from "./enum.ts";
 
 const orders: Order[] = [
     { id: "1", amount: 100, status: OrderStatus.Pending, payment: PaymentType.CreditCard },
@@ -28,12 +9,12 @@ const orders: Order[] = [
     { id: "5", amount: 300, status: OrderStatus.Canceled, payment: PaymentType.CreditCard }
 ];
 
-function updateOrderStatus(order: Order , status:OrderStatus) : void {
+const updateOrderStatus = (order: Order , status:OrderStatus) : void => {
     order.status = status;
     console.log(`Статус заказа ${order.id} был обновлен до ${status}`);
 }
 
-function getOrdersByStatus(orders: Order[], status: OrderStatus) : Order[] {
+const getOrdersByStatus = (orders: Order[], status: OrderStatus) : Order[] => {
     return orders.filter(order => order.status === status);
 }
 updateOrderStatus(orders[0], OrderStatus.Processing);
