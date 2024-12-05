@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6838695c-df73-4d39-a809-28f74af76d51" name="Changes" comment="v1">
-      <change afterPath="$PROJECT_DIR$/src/User.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Student.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Teacher.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.node.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +43,12 @@
     &quot;assignee&quot;: &quot;KirillGromyko09&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/KirillGromyko09/TypeScript_Homeworks.git&quot;,
-    &quot;accountId&quot;: &quot;42ee442c-ece0-48e0-9cd5-fa738b6ed45d&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/KirillGromyko09/TypeScript_Homeworks.git",
+    "accountId": "1777fdd0-04c2-4802-98c5-62872b4148c2"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -61,14 +68,14 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
-    "ts.external.directory.path": "C:\\Users\\User\\WebstormProjects\\TypeScript_Homeworks\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\alice\\WebstormProjects\\TypeScript_Homeworks\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.19072.23" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
       </set>
     </attachedChunks>
   </component>
@@ -83,6 +90,7 @@
       <workItem from="1729513078286" duration="1342000" />
       <workItem from="1729598602565" duration="3947000" />
       <workItem from="1729697900863" duration="299000" />
+      <workItem from="1733313157905" duration="5302000" />
     </task>
     <task id="LOCAL-00001" summary="done">
       <option name="closed" value="true" />
