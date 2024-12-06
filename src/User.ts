@@ -1,67 +1,59 @@
 import baseModel from "./BaseModel";
 import {UserParams} from "./interface.ts";
-import {PasswordStrength} from "./types.ts";
+import {PasswordStrength, UserTypes} from "./enums.ts";
+
 
 class User extends baseModel{
     private static currentId: number = 1;
-    static userTypes = {
-        STUDENT: 'student',
-        TEACHER: 'teacher',
-        DEFAULT: 'user'
-    }
-
-    static passwordStrength = Object.freeze({
-        WEAK: 'weak',
-        MEDIUM: 'medium',
-        STRONG: 'strong',
-    });
 
     static passwordValidations = {
-        [User.passwordStrength.WEAK]: (value: string) : boolean => {
+        [PasswordStrength.WEAK]: (value: string) : boolean => {
             return value.length >= 6;
         },
-        [User.passwordStrength.MEDIUM]: (value: string) : boolean => {
+        [PasswordStrength.MEDIUM]: (value: string) : boolean => {
             return value.length >= 8 && /[A-Za-z]/.test(value);
         },
-        [User.passwordStrength.STRONG]: (value: string) : boolean => {
+        [PasswordStrength.STRONG]: (value: string) : boolean => {
             return value.length >= 12 && /[A-Za-z]/.test(value) && /[!@#$%^&*(),.?":{}|<>]/.test(value);
         },
     }
 
-    #id: number = 0;
-    #pass : string | null = null;
-    #email : string | null = null;
-    #type : string = User.userTypes.DEFAULT;
+    private readonly userId: number = 0;
+    private pass : string | null = null;
+    private userEmail : string | null = null;
+    private readonly userType : UserTypes | string = UserTypes.DEFAULT;
 
-    name : string | null = null;
+    name: string = '';
 
     constructor({name, email , type} : UserParams)  {
         super()
         this.name = name;
         this.email = email;
-        this.#id = User.currentId;
+        this.userId = User.currentId;
 
-        if (Object.values(User.userTypes).includes(type)) {
-            this.#type = type;
+        if (Object.values(UserTypes).includes(type as UserTypes)) {
+            this.userType = type as UserTypes;
+        } else {
+            this.userType = UserTypes.DEFAULT
         }
         User.currentId += 1;
     }
 
     set email(value : string)  {
         if (value.includes('@') ) {
-            this.#email = value;
+            this.userEmail = value;
         } else {
             throw new Error('Email is invalid')
         }
     }
     get email (): string | null {
-        return this.#email;
+        return this.userEmail;
     }
     get type() : string {
-        return this.#type;
+        return this.userType;
     }
     get id (): number {
-        return this.#id;
+        return this.userId;
     }
 
     get info () : string {
@@ -71,16 +63,15 @@ class User extends baseModel{
             id : this.id,
         })
     }
-
-    set #password (newPassword : string)  {
-        this.#pass = atob(newPassword);
+    set password (newPassword : string)  {
+        this.pass = atob(newPassword);
     }
     get password(): string | null {
-        return this.#pass;
+        return this.pass;
     }
-    changePassword(newPassword : string , strength : PasswordStrength = 'WEAK') : void  {
-        const strengthKey = User.passwordStrength[strength];
-        if (!Object.values(User.passwordStrength).includes(strengthKey)) {
+    changePassword(newPassword : string , strength : PasswordStrength = PasswordStrength.WEAK) : void  {
+        const strengthKey: PasswordStrength = strength;
+        if (!Object.values(PasswordStrength).includes(strengthKey)) {
             throw new Error('Pass strength is wrong');
         }
 
@@ -88,7 +79,7 @@ class User extends baseModel{
             throw new Error('Password is too weak for ' + strength);
         }
 
-        this.#password = newPassword;
+        this.password = newPassword;
     }
 }
 

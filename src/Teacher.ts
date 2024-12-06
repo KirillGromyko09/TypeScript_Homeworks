@@ -1,6 +1,7 @@
 import User from "./User.ts";
 import {TeacherOrStudentParams} from "./interface.ts";
 import Course from "./Course.ts";
+import {UserTypes} from "./enums.ts";
 
 class Teacher extends User {
     static isTeacher(obj:object):boolean {
@@ -14,19 +15,21 @@ class Teacher extends User {
         super({
             name,
             email,
-            type:User.userTypes.TEACHER
+            type:UserTypes.TEACHER
         });
     }
-    #subjects: string[] = [];
+
+    private _subjects: string[] = [];
+
     get subjects(): readonly string[] {
-        return Object.freeze(this.#subjects)
+        return Object.freeze(this._subjects)
     }
 
     addSubject(subject:object & string):void {
         if(!Course.isCourse(subject)) {
             throw new Error(`${subject} is not valid`);
         }
-        this.#subjects.push(subject);
+        this._subjects.push(subject);
     }
 
 
