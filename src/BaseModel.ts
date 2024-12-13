@@ -1,8 +1,6 @@
-class BaseModel {
-    createdAt : number = Date.now();
-    validate() : void {
-        // does nothing
-    }
+abstract class BaseModel {
+    abstract createdAt : number;
+    abstract validate() : void
 }
 
 export default BaseModel;

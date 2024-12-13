@@ -1,9 +1,9 @@
 import User from "./User.ts";
-import {TeacherOrStudentParams} from "./interface.ts";
+import {ITeacher, TeacherOrStudentParams} from "./interface.ts";
 import Course from "./Course.ts";
 import {UserTypes} from "./enums.ts";
 
-class Teacher extends User {
+class Teacher extends User implements ITeacher {
     static isTeacher(obj:object):boolean {
         if (typeof obj !== 'object') {
             return false;
@@ -25,7 +25,7 @@ class Teacher extends User {
         return Object.freeze(this._subjects)
     }
 
-    addSubject(subject:object & string):void {
+    addSubject(subject:object & string): void | never {
         if(!Course.isCourse(subject)) {
             throw new Error(`${subject} is not valid`);
         }

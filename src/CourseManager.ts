@@ -2,63 +2,52 @@ import Course from "./Course.ts";
 import User from "./User.ts";
 import Teacher from "./Teacher.ts";
 import Student from "./Student.ts";
-import {boolOrUndefOrVoid} from "./types.ts";
+import {ICourseManager} from "./interface.ts";
 
-class CourseManager {
+
+class CourseManager implements ICourseManager {
     users: User[] = [];
     courses: Course[] = [];
 
-    addUser(user: User): boolOrUndefOrVoid{
+    addUser(user: User): boolean {
         if (!Teacher.isTeacher(user) && !Student.isStudent(user)) {
             return false;
         }
         this.users.push(user);
+        return true;
     }
 
-    addCourse(course: Course): boolOrUndefOrVoid {
+    addCourse(course: Course): boolean {
         if (!Course.isCourse(course)) {
             return false;
         }
         this.courses.push(course);
+        return true;
     }
 
-    getCourseById(courseId: number): Course | undefined {
-        return this.courses.find((course: Course) => course.id === courseId);
-    }
-
-    getUserById(userId: number): User | undefined {
-        return this.users.find((user: User) => user.id === userId);
+    getById<T>(stack: "users" | "courses", id: number): T | never {
+        const stackElement = this[stack].find((stack) => stack.id === id);
+        if (!stackElement) {
+            throw new Error(`${stack.slice(0, -1)} not found, 404`);
+        }
+        return stackElement as T;
     }
 
     assignTeacherToCourse(courseId: number, teacherId: number): void {
-        const selectedCourse: Course | undefined = this.getCourseById(courseId);
-        const selectedTeacher: User | undefined = this.getUserById(teacherId);
+        const selectedCourse: Course = this.getById<Course>("courses", courseId);
+        const selectedTeacher: Teacher = this.getById<Teacher>("users", teacherId);
 
-        if (!selectedCourse) {
-            throw new Error(`Course with ID ${courseId} not found`);
-        }
-        if (!selectedTeacher || !Teacher.isTeacher(selectedTeacher)) {
-            throw new Error(`Teacher with ID ${teacherId} not found or is not a valid Teacher`);
-        }
-
-        selectedCourse.changeTeacher(selectedTeacher as Teacher);
+        selectedCourse.changeTeacher(selectedTeacher);
     }
 
     enrollStudentToCourse(courseId: number, studentId: number): void {
-        const selectedCourse : Course | undefined = this.getCourseById(courseId);
-        const selectedStudent: User | undefined = this.getUserById(studentId);
+        const selectedCourse: Course = this.getById<Course>("courses", courseId);
+        const selectedStudent: Student = this.getById<Student>("users", studentId);
 
-        if (!selectedCourse) {
-            throw new Error(`Course with ID ${courseId} not found`);
-        }
-        if (!selectedStudent || !Student.isStudent(selectedStudent)) {
-            throw new Error(`Student with ID ${studentId} not found or is not a valid Student`);
-        }
-
-        selectedCourse.addStudent(selectedStudent as Student);
+        selectedCourse.addStudent(selectedStudent);
     }
 
-    generateReport() {
+    generateReport() : {users: string, courses: string} {
         return {
             users: JSON.stringify(this.users),
             courses: JSON.stringify(this.courses),

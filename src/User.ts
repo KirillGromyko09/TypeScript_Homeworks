@@ -1,10 +1,12 @@
 import baseModel from "./BaseModel";
-import {UserParams} from "./interface.ts";
+import {IUser, UserParams} from "./interface.ts";
 import {PasswordStrength, UserTypes} from "./enums.ts";
 
 
-class User extends baseModel{
+class User extends baseModel implements IUser{
     private static currentId: number = 1;
+
+    createdAt: number = Date.now();
 
     static passwordValidations = {
         [PasswordStrength.WEAK]: (value: string) : boolean => {
@@ -28,7 +30,7 @@ class User extends baseModel{
     constructor({name, email , type} : UserParams)  {
         super()
         this.name = name;
-        this.email = email;
+        this.userEmail = email;
         this.userId = User.currentId;
 
         if (Object.values(UserTypes).includes(type as UserTypes)) {
@@ -40,14 +42,14 @@ class User extends baseModel{
     }
 
     set email(value : string)  {
-        if (value.includes('@') ) {
+        if (value.includes('@')) {
             this.userEmail = value;
         } else {
             throw new Error('Email is invalid')
         }
     }
-    get email (): string | null {
-        return this.userEmail;
+    get email (): string {
+        return this.userEmail ?? '';
     }
     get type() : string {
         return this.userType;
@@ -69,7 +71,7 @@ class User extends baseModel{
     get password(): string | null {
         return this.pass;
     }
-    changePassword(newPassword : string , strength : PasswordStrength = PasswordStrength.WEAK) : void  {
+    changePassword(newPassword : string , strength : PasswordStrength = PasswordStrength.WEAK) : void | never  {
         const strengthKey: PasswordStrength = strength;
         if (!Object.values(PasswordStrength).includes(strengthKey)) {
             throw new Error('Pass strength is wrong');
@@ -80,6 +82,9 @@ class User extends baseModel{
         }
 
         this.password = newPassword;
+    }
+    validate(): boolean {
+        return (this.name.trim() !== '' && this.email.trim() !== '' && this.pass !== '');
     }
 }
 

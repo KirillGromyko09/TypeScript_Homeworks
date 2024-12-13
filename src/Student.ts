@@ -1,9 +1,9 @@
 import User from "./User.ts";
-import {TeacherOrStudentParams} from "./interface.ts";
+import {IStudent, TeacherOrStudentParams} from "./interface.ts";
 import Course from "./Course.ts";
 import {UserTypes} from "./enums.ts";
 
-class Student extends User {
+class Student extends User implements IStudent {
     static isStudent(obj : object): boolean {
         if(typeof obj !== 'object') {
             return false;
@@ -23,7 +23,7 @@ class Student extends User {
     get courses(): readonly Course[] {
         return Object.freeze(this._courses)
     }
-    enroll(course: Course): void{
+    enroll(course: Course): void | never {
         if(!Course.isCourse(course)) {
             throw new Error('arg should be an instance of class Course');
         }

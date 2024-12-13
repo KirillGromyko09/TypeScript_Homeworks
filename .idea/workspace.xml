@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6838695c-df73-4d39-a809-28f74af76d51" name="Changes" comment="v1">
-      <change afterPath="$PROJECT_DIR$/src/Student.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Teacher.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.node.json" beforeDir="false" />
-    </list>
+    <list default="true" id="6838695c-df73-4d39-a809-28f74af76d51" name="Changes" comment="fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,12 +33,12 @@
     &quot;assignee&quot;: &quot;KirillGromyko09&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/KirillGromyko09/TypeScript_Homeworks.git",
-    "accountId": "1777fdd0-04c2-4802-98c5-62872b4148c2"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KirillGromyko09/TypeScript_Homeworks.git&quot;,
+    &quot;accountId&quot;: &quot;1777fdd0-04c2-4802-98c5-62872b4148c2&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -67,11 +57,29 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
     "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
     "ts.external.directory.path": "C:\\Users\\alice\\WebstormProjects\\TypeScript_Homeworks\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -124,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729697926267</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix">
+      <option name="closed" value="true" />
+      <created>1733494121878</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733494121878</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,12 +148,22 @@
     <option name="exactExcludedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/main.js" />
+        <option value="$PROJECT_DIR$/src/types.js" />
+        <option value="$PROJECT_DIR$/src/enums.js" />
+        <option value="$PROJECT_DIR$/src/Course.js" />
+        <option value="$PROJECT_DIR$/src/interface.js" />
+        <option value="$PROJECT_DIR$/src/CourseManager.js" />
+        <option value="$PROJECT_DIR$/src/BaseModel.js" />
+        <option value="$PROJECT_DIR$/src/Teacher.js" />
+        <option value="$PROJECT_DIR$/src/Student.js" />
+        <option value="$PROJECT_DIR$/src/User.js" />
       </list>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="done" />
     <MESSAGE value="v1" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
 </project>
